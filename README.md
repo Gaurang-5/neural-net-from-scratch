@@ -81,7 +81,9 @@ neural-net-from-scratch/
 │   ├── loss_curve.png     # Plot tracking the training and validation loss
 │   ├── accuracy_curve.png # Plot tracking the training and validation accuracy
 │   ├── confusion_matrix.png  # Heatmap of the model's predictions on the test set
-│   └── metrics.json       # Serialized dictionary of training history metrics
+│   ├── metrics.json       # Serialized dictionary of training history metrics
+│   └── model_weights.npz  # Saved weights and biases from the trained network
+├── draw_and_predict.py    # Interactive GUI to draw digits and get live predictions
 ├── train.py               # Main script to assemble, train, and evaluate the network
 ├── README.md              # Project documentation and mathematical explanations
 └── requirements.txt       # Minimal dependencies (numpy, matplotlib, scikit-learn)
@@ -100,6 +102,10 @@ neural-net-from-scratch/
 3. **Generate visualizations:**
    ```bash
    python results/plot_results.py
+   ```
+4. **Draw and predict digits:**
+   ```bash
+   python draw_and_predict.py
    ```
 
 ## Key Implementation Decisions
