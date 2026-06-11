@@ -105,4 +105,7 @@ if __name__ == "__main__":
     with open("results/metrics.json", "w") as f:
         json.dump(metrics, f, indent=4)
         
+    print("Saving model weights to results/model_weights.npz...")
+    nn.save_weights("results/model_weights.npz")
+        
     print("Done!")

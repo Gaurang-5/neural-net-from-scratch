@@ -74,6 +74,21 @@ class NeuralNetwork:
                 # Fallback for optimizers that only take the layer (like standard SGD)
                 self.optimizer.update(layer)
 
+    def save_weights(self, filepath: str) -> None:
+        """Saves the weights and biases of all layers to a compressed .npz file."""
+        weights = {}
+        for i, layer in enumerate(self.layers):
+            weights[f'W_{i}'] = layer.W
+            weights[f'b_{i}'] = layer.b
+        np.savez(filepath, **weights)
+
+    def load_weights(self, filepath: str) -> None:
+        """Loads weights and biases from a .npz file into the network layers."""
+        data = np.load(filepath)
+        for i, layer in enumerate(self.layers):
+            layer.W = data[f'W_{i}']
+            layer.b = data[f'b_{i}']
+
     def train_one_epoch(self, X: np.ndarray, Y: np.ndarray, batch_size: int = 32) -> float:
         """
         Trains the network for one epoch using mini-batch gradient descent.
