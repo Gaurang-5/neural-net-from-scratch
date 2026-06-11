@@ -67,7 +67,7 @@ def predict_digit(image_dict):
     return {str(i): float(probabilities[i]) for i in range(10)}
 
 # Build the Gradio UI
-with gr.Blocks(title="Neural Network from Scratch", theme=gr.themes.Soft()) as demo:
+with gr.Blocks(title="Neural Network from Scratch") as demo:
     gr.Markdown(
         """
         # 🧠 Neural Network from Scratch
@@ -79,7 +79,7 @@ with gr.Blocks(title="Neural Network from Scratch", theme=gr.themes.Soft()) as d
     with gr.Row():
         with gr.Column(scale=1):
             # Sketchpad allows the user to draw
-            sketchpad = gr.Sketchpad(label="Draw a number here", type="pil", brush_radius=20)
+            sketchpad = gr.Sketchpad(label="Draw a number here", type="pil")
             clear_btn = gr.Button("Clear Canvas")
             
         with gr.Column(scale=1):
@@ -91,4 +91,4 @@ with gr.Blocks(title="Neural Network from Scratch", theme=gr.themes.Soft()) as d
     clear_btn.click(lambda: None, inputs=None, outputs=sketchpad)
 
 if __name__ == "__main__":
-    demo.launch(share=False)
+    demo.launch(share=False, theme=gr.themes.Soft())
